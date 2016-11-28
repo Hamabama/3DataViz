@@ -1,26 +1,30 @@
 <!DOCTYPE>
 <html prefix="og: http://ogp.me/ns#">
-<link rel="stylesheet" type="text/css" href="Assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+
 <head>
-<meta property="og:title" content="3D Web Data Visualization Tool" />
-<meta property="og:type" content="website" />
-<meta property="og:description" content="Our main focus in this project is creating a mechanism or tool that can process various types of data formats and visualize them on a specific visualization template that we have built so that users can visualize their data in the 3D world without knowing about much of the technologies around it." />
-<meta property="og:url" content="http://seneca-cdot.github.io/3DataViz/" />
-<meta property="og:image" content="http://seneca-cdot.github.io/3DataViz/Assets/images/logo.png" />
+    <meta property="og:title" content="3D Web Data Visualization Tool" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Our main focus in this project is creating a mechanism or tool that can process various types of data formats and visualize them on a specific visualization template that we have built so that users can visualize their data in the 3D world without knowing about much of the technologies around it."
+    />
+    <meta property="og:url" content="http://seneca-cdot.github.io/3DataViz/" />
+    <meta property="og:image" content="http://seneca-cdot.github.io/3DataViz/Assets/images/logo.png" />
 </head>
+
 <body>
-<div id="applicationRegion">
-<div id="startScreen"><div class="notification">LOADING...</div></div>
-</div>
+    <div class="application-frame">
+        <div id="startScreen">
+            <div class="notification">LOADING...</div>
+        </div>
+    </div>
 </body>
 <script id="rootGlobeViewTemplate" type="text/html"></script>
 <script id="globeViewTemplate" type="text/html"></script>
 <!-- structure -->
-<script type="text/javascript" src="Libraries/jquery.js"></script>
-<script type="text/javascript" src="Libraries/underscore.js"></script>
-<script type="text/javascript" src="Libraries/backbone.js"></script>
+<script type="text/javascript" src="Libraries/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="Libraries/underscore-min.js"></script>
+<script type="text/javascript" src="Libraries/backbone-min.js"></script>
 <script type="text/javascript" src='Libraries/randomColor.min.js'></script>
 <script type="text/javascript" src="https://app.box.com/js/static/select.js"></script>
 <!-- 3D library -->
@@ -44,20 +48,32 @@
 <script type="text/javascript" src='Libraries/map3d.js'></script>
 <script type="text/javascript" src='Libraries/papaparse.js'></script>
 <script type="text/javascript" src='Routes/RootRouter.js'></script>
+<!-- CANVAS VIEWS -->
 <script type="text/javascript" src='Views/GlobeDecorators/GeometryGlobeDecorator.js'></script>
 <script type="text/javascript" src='Views/GlobeDecorators/TextureGlobeDecorator.js'></script>
 <script type="text/javascript" src='Views/GlobeDecorators/GlobeDecoratorFactory.js'></script>
-<script type="text/javascript" src='Views/ControlPanel/ControlPanelGlobeView.js'></script>
-<script type="text/javascript" src='Views/ControlPanel/ControlElementsGlobeView.js'></script>
-<script type="text/javascript" src='Views/ControlPanel/Matcher.js'></script>
-<script type="text/javascript" src='Views/ControlPanel/FiltersView.js'></script>
-<script type="text/javascript" src='Views/ControlPanel/InstructionView.js'></script>
-<script type="text/javascript" src='Views/ControlPanel/Timeline.js'></script>
-<script type="text/javascript" src='Views/ControlPanel/CameraSwitcherView.js'></script>
+<!-- HTML VIEWS -->
+<script type="text/javascript" src='Views/Menu/MenuRootView.js'></script>
+<script type="text/javascript" src='Views/Menu/MenuButtonsView.js'></script>
+<script type="text/javascript" src='Views/Menu/MenuControlsView.js'></script>
+<script type="text/javascript" src='Views/Menu/MenuView.js'></script>
+<script type="text/javascript" src='Views/Menu/VisualizationsMenu/VisualizationsMenuItems.js'></script>
+<script type="text/javascript" src='Views/Menu/VisualizationsMenu/VisualizationsMenuView.js'></script>
+
+<script type="text/javascript" src='Views/Menu/ControlPanelRootView.js'></script>
+<script type="text/javascript" src='Views/Menu/ControlElementsGlobeView.js'></script>
+<script type="text/javascript" src='Views/Menu/Matcher.js'></script>
+<script type="text/javascript" src='Views/Menu/FiltersView.js'></script>
+<script type="text/javascript" src='Views/Menu/InstructionView.js'></script>
+<script type="text/javascript" src='Views/Menu/Timeline.js'></script>
+<script type="text/javascript" src='Views/Menu/CameraSwitcherView.js'></script>
 <script type="text/javascript" src='Views/BaseClasses/RootView.js'></script>
 <script type="text/javascript" src='Views/BaseClasses/RootGlobeView.js'></script>
 <script type="text/javascript" src='Views/BaseClasses/BaseGlobeView.js'></script>
 <script type="text/javascript" src='Views/BaseClasses/BasePointCloudView.js'></script>
+<!-- MODELS -->
 <script type="text/javascript" src='Models/BaseClasses/BaseGlobeModel.js'></script>
+<script type="text/javascript" src='Models/VisualizationsModel.js'></script>
 <script data-main="Application.js" src="Libraries/require.js"></script>
+
 </html>

@@ -11,7 +11,8 @@ Application.RootView = Backbone.View.extend({
   id: 'rootView',
   initialize: function() {
 
-    this.controlPanel = new Application.ControlPanelRootView();
+    this.menuRootView = new Application.MenuRootView();
+    
     this.notifBox = new Application.NotificationsCenter();
     this.infocenter = new Application.VizInfoCenter();
     this.titleBox = new Application.VizTitleCenter();
@@ -29,7 +30,7 @@ Application.RootView = Backbone.View.extend({
   },
   render: function() {
 
-    this.$el.append(this.controlPanel.render().$el);
+    this.$el.append(this.menuRootView.render().$el);
     this.$el.append(this.notifBox.render().$el);
     this.$el.append(this.infocenter.render().$el);
     this.$el.append(this.titleBox.render().$el);

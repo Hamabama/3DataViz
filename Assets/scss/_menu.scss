@@ -1,0 +1,60 @@
+$minMenuWidth: 600px;
+$menuWidth: 60%;
+
+.root-menu {
+}
+
+.menu-button-frame, .close-button-frame {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.close-button-frame {
+  z-index: 2;
+}
+
+.menu-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: $backgroundColor;
+  z-index: 1;
+  display: none;
+}
+
+.menu-button-icon {
+  width: 100%;
+  height: 100%;
+  fill: #e5e5e5;
+
+  &:hover {
+    fill: #ffffff;
+  }
+}
+
+.menu-button-icon-close {
+  width: 100%;
+  height: 100%;
+  stroke: #e5e5e5;
+  transform: rotate(45deg);
+
+  &:hover {
+    stroke: #ffffff;
+  }
+}
+
+.menu-controls {
+position: relative;
+min-width: $minMenuWidth;
+width: $menuWidth;
+height: 70px;
+margin: 0 auto;
+background-color: green;
+}

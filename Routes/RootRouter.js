@@ -9,7 +9,6 @@ Application.RootRouter = Backbone.Router.extend({
 
   routes: {
     "": "initRootView",
-    "view":"",
     "earthquakes":"initEarthquakes",
     "immigration":"initImmigration",
     "currencies":"initCurrencies"
@@ -17,7 +16,7 @@ Application.RootRouter = Backbone.Router.extend({
   initRootView: function() {
 
     this.view = new Application.RootView();
-    $("#applicationRegion").append(this.view.render().$el);
+    $(".application-frame").append(this.view.render().$el);
     this.examples = new Application.Examples();
     this.examples.init();
 
