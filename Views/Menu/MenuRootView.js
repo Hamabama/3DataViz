@@ -49,7 +49,7 @@ Application.MenuRootView = Backbone.View.extend({
     return this;
   },
   onMenuButtonClick: function() {
-   this.menuView.show();
+   this.menuView.showMenu();
   },
   changeLocation: function() {
     window.location = '#view';

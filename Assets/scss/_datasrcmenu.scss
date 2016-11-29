@@ -1,24 +1,27 @@
-.visualizations-list-menu {
+.datasources-list-menu {
   position: relative;
   min-width: $minMenuWidth;
   width: $menuWidth;
   height: calc(100% - 70px);
   margin: 0 auto;
+  border: 1px solid red;
 }
 
-.visualizations-list-menu-intro {
+.datasources-list-menu-intro {
   width: 100%;
   font-size: 2rem;
   text-align: center;
+  border: 1px solid green;
 }
 
-.visualizations-list-items {
+
+.datasources-list-items {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.visualizations-list-item {
+.datasources-list-item {
   margin: 20px;
   padding: 5px;
   border-radius: 5px;
@@ -29,12 +32,12 @@
   }
 }
 
-.visualizations-list-item-title {
+.datasources-list-item-title {
   margin-top: 10px;
   text-align: center;
 }
 
-.visualizations-list-item-thumb {
+.datasources-list-item-thumb {
   border: 1px solid $backgroundColor;
 border-radius: 5px;
   &:hover {
@@ -45,7 +48,7 @@ border-radius: 5px;
   }
 }
 
-.visualizations-list-item-description {
+.datasources-list-item-description {
   position: relative;
   width: 100%;
   padding-top: 50px;

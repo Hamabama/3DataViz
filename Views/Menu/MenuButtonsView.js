@@ -18,8 +18,7 @@ Application.MenuButtonView = Backbone.View.extend({
   },
   showMenu: function() {
     this.trigger('menu:show');
-  },
-  destroy: function() {}
+  }
 });
 
 Application.CloseButtonView = Backbone.View.extend({
@@ -40,6 +39,5 @@ Application.CloseButtonView = Backbone.View.extend({
   },
   closeMenu: function() {
     this.trigger('menu:close');
-  },
-  destroy: function() {}
+  }
 });

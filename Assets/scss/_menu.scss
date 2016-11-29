@@ -56,5 +56,22 @@ min-width: $minMenuWidth;
 width: $menuWidth;
 height: 70px;
 margin: 0 auto;
-background-color: green;
+bottom: 100px;
+}
+
+.menu-controls-next, .menu-controls-back {
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-color: #e6e6e6;
+  cursor: pointer;
+  display: none;
+}
+
+.menu-controls-back {
+  left: 0;
+}
+
+.menu-controls-next {
+    right: 0;
 }

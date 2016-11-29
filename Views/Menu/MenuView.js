@@ -3,30 +3,46 @@ Application.MenuView = Backbone.View.extend({
   className: 'menu-frame',
   initialize: function() {
     this.closeButtonView = new Application.CloseButtonView();
-    this.listenTo(this.closeButtonView, 'menu:close', this.hide);
+    this.listenTo(this.closeButtonView, 'menu:close', this.hideMenu);
 
-    this.visualizationsMenuList = new Application.VisualizationsView({
+    this.menuControlsView = new Application.MenuControlsView();
+    this.listenTo(this.menuControlsView, 'menu:next', this.onMenuNext);
+    this.listenTo(this.menuControlsView, 'menu:back', this.onMenuBack);
+
+    this.visualizationsMenuView = new Application.VisualizationsMenuView({
+      collection: Application.visualizationsCollection
+    });
+    this.listenTo(this.visualizationsMenuView, 'configuration:completed', this.onConfigurationCompleted);
+
+    this.dataSourcesMenuView = new Application.DataSourcesMenuView({
       collection: Application.visualizationsCollection
     });
 
-    this.menuControlsView = new Application.MenuControlsView();
   },
   events: {
-    'click': 'hideMenu'
   },
   render: function() {
     this.$el.append(this.closeButtonView.render().el);
-    this.$el.append(this.visualizationsMenuList.render().el);
+    // this.$el.append(this.visualizationsMenuView.render().el);
+    this.$el.append(this.dataSourcesMenuView.render().el);
     this.$el.append(this.menuControlsView.render().el);
     return this;
   },
-  show: function () {
+  showMenu: function () {
     this.$el.fadeIn(100);
   },
-  hide: function() {
+  hideMenu: function() {
     this.$el.fadeOut(100);
   },
-  destroy: function() {
-    this.stopListening();
-  }
+  createVisualizationsView: function() {
+    if (this.visualizationsMenuView) this.visualizationsMenuView.remove();
+    this.visualizationsMenuView = new Application.VisualizationsView({
+      collection: Application.visualizationsCollection
+    });
+  },
+  onConfigurationCompleted: function() {
+    this.menuControlsView.showNextButton();
+  },
+  onMenuNext: function() {},
+  onMenuBack: function() {}
 });

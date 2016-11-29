@@ -12,7 +12,7 @@ Application = {
 
     //Create Route which handles Views and Models
     init: function() {
-        this.rootRouter = new this.RootRouter();
+        new this.RootRouter();
         Backbone.history.start();
         $('#startScreen').remove();
     },

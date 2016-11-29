@@ -1089,7 +1089,21 @@ img {
   width: 60%;
   height: 70px;
   margin: 0 auto;
-  background-color: green; }
+  bottom: 100px; }
+
+.menu-controls-next, .menu-controls-back {
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-color: #e6e6e6;
+  cursor: pointer;
+  display: none; }
+
+.menu-controls-back {
+  left: 0; }
+
+.menu-controls-next {
+  right: 0; }
 
 .visualizations-list-menu {
   position: relative;
@@ -1131,6 +1145,53 @@ img {
     border-color: #ffffff; }
 
 .visualizations-list-item-description {
+  position: relative;
+  width: 100%;
+  padding-top: 50px;
+  text-align: center; }
+
+.datasources-list-menu {
+  position: relative;
+  min-width: 600px;
+  width: 60%;
+  height: calc(100% - 70px);
+  margin: 0 auto;
+  border: 1px solid red; }
+
+.datasources-list-menu-intro {
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
+  border: 1px solid green; }
+
+.datasources-list-items {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.datasources-list-item {
+  margin: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer; }
+  .datasources-list-item.is-clicked {
+    border-color: #ffffff; }
+
+.datasources-list-item-title {
+  margin-top: 10px;
+  text-align: center; }
+
+.datasources-list-item-thumb {
+  border: 1px solid #383A56;
+  border-radius: 5px; }
+  .datasources-list-item-thumb:hover {
+    border-color: #ffffff; }
+  .datasources-list-item-thumb.is-clicked {
+    border-color: #ffffff; }
+
+.datasources-list-item-description {
   position: relative;
   width: 100%;
   padding-top: 50px;

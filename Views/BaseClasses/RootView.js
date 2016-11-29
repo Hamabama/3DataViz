@@ -12,7 +12,7 @@ Application.RootView = Backbone.View.extend({
   initialize: function() {
 
     this.menuRootView = new Application.MenuRootView();
-    
+
     this.notifBox = new Application.NotificationsCenter();
     this.infocenter = new Application.VizInfoCenter();
     this.titleBox = new Application.VizTitleCenter();

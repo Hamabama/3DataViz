@@ -4,7 +4,7 @@ Application.VisualizationModel = Backbone.Model.extend({
     imgUrl: '',
     description: '',
     dataSources: [],
-    clicked: false
+    chosen: false
   }
 });
 

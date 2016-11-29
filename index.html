@@ -22,7 +22,7 @@
 <script id="rootGlobeViewTemplate" type="text/html"></script>
 <script id="globeViewTemplate" type="text/html"></script>
 <!-- structure -->
-<script type="text/javascript" src="Libraries/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="Libraries/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="Libraries/underscore-min.js"></script>
 <script type="text/javascript" src="Libraries/backbone-min.js"></script>
 <script type="text/javascript" src='Libraries/randomColor.min.js'></script>
@@ -47,18 +47,21 @@
 <script type="text/javascript" src='Libraries/tween.min.js'></script>
 <script type="text/javascript" src='Libraries/map3d.js'></script>
 <script type="text/javascript" src='Libraries/papaparse.js'></script>
+<!-- ROUTER -->
 <script type="text/javascript" src='Routes/RootRouter.js'></script>
 <!-- CANVAS VIEWS -->
 <script type="text/javascript" src='Views/GlobeDecorators/GeometryGlobeDecorator.js'></script>
 <script type="text/javascript" src='Views/GlobeDecorators/TextureGlobeDecorator.js'></script>
 <script type="text/javascript" src='Views/GlobeDecorators/GlobeDecoratorFactory.js'></script>
-<!-- HTML VIEWS -->
+<!-- MENU VIEWS -->
 <script type="text/javascript" src='Views/Menu/MenuRootView.js'></script>
 <script type="text/javascript" src='Views/Menu/MenuButtonsView.js'></script>
 <script type="text/javascript" src='Views/Menu/MenuControlsView.js'></script>
 <script type="text/javascript" src='Views/Menu/MenuView.js'></script>
-<script type="text/javascript" src='Views/Menu/VisualizationsMenu/VisualizationsMenuItems.js'></script>
+<script type="text/javascript" src='Views/Menu/VisualizationsMenu/VisualizationsMenuItemsView.js'></script>
 <script type="text/javascript" src='Views/Menu/VisualizationsMenu/VisualizationsMenuView.js'></script>
+<script type="text/javascript" src='Views/Menu/DataSourcesMenu/DataSourcesMenuView.js'></script>
+<script type="text/javascript" src='Views/Menu/DataSourcesMenu/DataSourcesMenuItemsView.js'></script>
 
 <script type="text/javascript" src='Views/Menu/ControlPanelRootView.js'></script>
 <script type="text/javascript" src='Views/Menu/ControlElementsGlobeView.js'></script>
@@ -73,7 +76,9 @@
 <script type="text/javascript" src='Views/BaseClasses/BasePointCloudView.js'></script>
 <!-- MODELS -->
 <script type="text/javascript" src='Models/BaseClasses/BaseGlobeModel.js'></script>
+<script type="text/javascript" src='Models/MenuModel.js'></script>
 <script type="text/javascript" src='Models/VisualizationsModel.js'></script>
+<script type="text/javascript" src='Models/DataSourcesModel.js'></script>
 <script data-main="Application.js" src="Libraries/require.js"></script>
 
 </html>
