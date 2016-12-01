@@ -25,8 +25,17 @@ $menuWidth: 60%;
   height: 100%;
   overflow: hidden;
   background-color: $backgroundColor;
+  background: linear-gradient(#5C258D , #4389A2); 
   z-index: 1;
   display: none;
+}
+
+.menu-items-frame {
+  position: relative;
+  min-width: $minMenuWidth;
+  width: $menuWidth;
+  height: calc(100% - 70px);
+  margin: 0 auto;
 }
 
 .menu-button-icon {

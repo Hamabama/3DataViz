@@ -3,27 +3,55 @@ Application.VisualizationsMenuView = Backbone.View.extend({
   className: 'visualizations-list-menu',
 
   initialize: function() {
+
     this.visualizationMenuIntroView = new Application.VisualizationsMenuIntroView();
+
     this.visualizationMenuItemsView = new Application.VisualizationMenuItemsView({
-      collection: this.collection
+
+      collection: this.collection, model: this.model
+
     });
 
     this.visualizationMenuItemDescriptionView = new Application.VisualizationMenuItemDescriptionView({
+
       collection: this.collection
+
     });
 
-    this.listenTo(this.collection, 'change:chosen', this.onChosenChanged);
+    this.render();
 
   },
+
   render: function() {
-    this.$el.append(this.visualizationMenuIntroView.render().el);
-    this.$el.append(this.visualizationMenuItemsView.render().el);
-    this.$el.append(this.visualizationMenuItemDescriptionView.el);
+
+    this.$el.append( this.visualizationMenuIntroView.render().el );
+
+    this.$el.append( this.visualizationMenuItemsView.render().el );
+
+    this.$el.append( this.visualizationMenuItemDescriptionView.el );
+
     return this;
+
   },
-  onChosenChanged: function() {
-    this.trigger('configuration:completed');
+
+  detach: function() {
+
+    this.$el.detach();
+
+  },
+
+  remove: function() {
+
+    this.visualizationMenuIntroView.remove();
+
+    this.visualizationMenuItemsView.remove();
+
+    this.visualizationMenuItemDescriptionView.remove();
+
+    Backbone.View.prototype.remove.call( this );
+
   }
+
 });
 
 Application.VisualizationsMenuIntroView = Backbone.View.extend({
@@ -32,10 +60,15 @@ Application.VisualizationsMenuIntroView = Backbone.View.extend({
 
   initialize: function() {
   },
+
   render: function() {
-    this.$el.append('<p>Pick a visualization template:</p>');
+
+    this.$el.append( '<p>Pick a visualization template:</p>' );
+
     return this;
+
   }
+
 });
 
 

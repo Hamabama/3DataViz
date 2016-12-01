@@ -5,8 +5,8 @@ Application.MenuControlsView = Backbone.View.extend({
     this.nextButton = new Application.MenuControlsViewNextButton();
     this.backButton = new Application.MenuControlsViewBackButton();
 
-    this.listenTo(this.nextButton, 'click', this.onClickNextButton);
-    this.listenTo(this.backButton, 'click', this.onClickBackButton);
+    this.listenTo(this.nextButton.$el, 'click', this.onClickNextButton);
+    this.listenTo(this.backButton.$el, 'click', this.onClickBackButton);
   },
   render: function() {
     this.$el.append(this.nextButton.render().el);
@@ -39,9 +39,13 @@ Application.MenuControlsViewNextButton = Backbone.View.extend({
   initialize: function() {
   },
   events: {
+    'click': 'onClick'
   },
   render: function() {
     return this;
+  },
+  onClick: function() {
+    this.trigger('menu:next');
   },
   show: function() {
     this.$el.show();
@@ -57,12 +61,12 @@ Application.MenuControlsViewBackButton = Backbone.View.extend({
   initialize: function() {
   },
   events: {
-    'click': 'onClickBackButton'
+    'click': 'onClick'
   },
   render: function() {
     return this;
   },
-  onClickBackButton: function() {
+  onClick: function() {
     this.trigger('menu:back');
   },
   show: function() {

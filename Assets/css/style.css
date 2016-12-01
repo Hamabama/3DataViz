@@ -919,6 +919,7 @@ img {
   width: 100%;
   height: 100%;
   background-color: #383A56;
+  background: linear-gradient(#5C258D, #4389A2);
   overflow-y: scroll;
   overflow-x: hidden; }
 
@@ -952,9 +953,12 @@ img {
   padding: 5px; }
 
 #instruction .demoItem img {
-  border: 1px solid #383A56; }
+  border: 1px solid #383A56;
+  box-shadow: 0 8px 6px -6px black;
+  transition: 0.5s; }
   #instruction .demoItem img:hover {
-    border-color: #fff; }
+    border-color: #fff;
+    transition: 0.5s; }
 
 #instruction .demoTitle {
   text-align: center;
@@ -973,7 +977,8 @@ img {
   width: 100%;
   margin-bottom: 30px;
   text-align: center;
-  padding-right: 150px; }
+  padding-right: 150px;
+  letter-spacing: 2px; }
 
 #instructionFooter {
   width: 100%;
@@ -1065,8 +1070,16 @@ img {
   height: 100%;
   overflow: hidden;
   background-color: #383A56;
+  background: linear-gradient(#5C258D, #4389A2);
   z-index: 1;
   display: none; }
+
+.menu-items-frame {
+  position: relative;
+  min-width: 600px;
+  width: 60%;
+  height: calc(100% - 70px);
+  margin: 0 auto; }
 
 .menu-button-icon {
   width: 100%;
@@ -1106,11 +1119,9 @@ img {
   right: 0; }
 
 .visualizations-list-menu {
-  position: relative;
-  min-width: 600px;
-  width: 60%;
-  height: calc(100% - 70px);
-  margin: 0 auto; }
+  position: absolute;
+  width: 100%;
+  height: 100%; }
 
 .visualizations-list-menu-intro {
   width: 100%;
@@ -1129,8 +1140,6 @@ img {
   padding: 5px;
   border-radius: 5px;
   cursor: pointer; }
-  .visualizations-list-item.is-clicked {
-    border-color: #ffffff; }
 
 .visualizations-list-item-title {
   margin-top: 10px;
@@ -1138,10 +1147,13 @@ img {
 
 .visualizations-list-item-thumb {
   border: 1px solid #383A56;
-  border-radius: 5px; }
+  border-radius: 5px;
+  box-shadow: 0 8px 6px -6px black;
+  transition: 0.5s; }
   .visualizations-list-item-thumb:hover {
-    border-color: #ffffff; }
-  .visualizations-list-item-thumb.is-clicked {
+    border-color: #ffffff;
+    transition: 0.5s; }
+  .visualizations-list-item-thumb.is-selected {
     border-color: #ffffff; }
 
 .visualizations-list-item-description {
@@ -1151,18 +1163,14 @@ img {
   text-align: center; }
 
 .datasources-list-menu {
-  position: relative;
-  min-width: 600px;
-  width: 60%;
-  height: calc(100% - 70px);
-  margin: 0 auto;
-  border: 1px solid red; }
+  position: absolute;
+  width: 100%;
+  height: 100%; }
 
 .datasources-list-menu-intro {
   width: 100%;
   font-size: 2rem;
-  text-align: center;
-  border: 1px solid green; }
+  text-align: center; }
 
 .datasources-list-items {
   width: 100%;
@@ -1176,8 +1184,6 @@ img {
   padding: 5px;
   border-radius: 5px;
   cursor: pointer; }
-  .datasources-list-item.is-clicked {
-    border-color: #ffffff; }
 
 .datasources-list-item-title {
   margin-top: 10px;
@@ -1185,10 +1191,13 @@ img {
 
 .datasources-list-item-thumb {
   border: 1px solid #383A56;
-  border-radius: 5px; }
+  border-radius: 5px;
+  box-shadow: 0 8px 6px -6px black;
+  transition: 0.5s; }
   .datasources-list-item-thumb:hover {
-    border-color: #ffffff; }
-  .datasources-list-item-thumb.is-clicked {
+    border-color: #ffffff;
+    transition: 0.5s; }
+  .datasources-list-item-thumb.is-selected {
     border-color: #ffffff; }
 
 .datasources-list-item-description {

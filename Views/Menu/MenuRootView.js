@@ -4,7 +4,7 @@ Application.MenuRootView = Backbone.View.extend({
   initialize: function() {
 
     this.menuButtonView = new Application.MenuButtonView();
-    this.menuView = new Application.MenuView();
+    this.menuView = new Application.MenuView({ model: Application.menuModel });
 
     this.listenTo(this.menuButtonView, 'menu:show', this.onMenuButtonClick);
 

@@ -1,86 +1,173 @@
 Application.VisualizationMenuItemsView = Backbone.View.extend({
+
   tagName: 'div',
+
   className: 'visualizations-list-items',
+
   initialize: function() {
+
     var _this = this;
     this.itemViews = [];
+    this.menuModel = this.model;
+    this.visCollection = this.collection;
 
-    this.collection.forEach(function(model) {
-      _this.itemViews.push(new Application.VisualizationMenuItemView({ model: model }));
+    this.visCollection.forEach(function(visModel) {
+
+      _this.itemViews.push(new Application.VisualizationMenuItemView({ model: visModel }));
+
     });
 
-    this.listenTo(this.collection, 'change:chosen', this.onChosenChanged);
+    this.listenTo( this.visCollection, 'change:selected', this.onSelectedChanged );
 
   },
-  onChosenChanged: function(model) {
-    if (model.get('chosen') === false) return;
 
-    if (this.currentModelChanged === undefined) {
-      this.setModelCurrent(model);
-      return;
-    }
+  onSelectedChanged: function( visModel ) {
 
-    if (this.currentModelChanged.get('chosen') === true) this.currentModelChanged.set('chosen', false);
+    if ( visModel.get( 'selected' ) === false ) return;
 
-    this.setModelCurrent(model);
+
+    this.getDataAboutVisualization( visModel );
+
+    this.setNextAndPrevious();
+
+    if ( this.currentModelChanged !== undefined ) {
+
+    if ( this.currentModelChanged.get( 'selected' ) === true ) this.currentModelChanged.set( 'selected', false );
+
+  }
+    this.setModelCurrent( visModel );
+
   },
-  setModelCurrent: function(model) {
+
+  getDataAboutVisualization: function( visModel ) {
+
+    this.menuModel.set( 'visualization', visModel.get('visualization') );
+
+    this.menuModel.set( 'dataSources', visModel.get('dataSources') );
+
+  },
+
+  setNextAndPrevious: function() {
+
+    this.menuModel.set( 'next', 'dataSources' );
+
+    this.menuModel.set( 'previous', 'visualization' );
+
+  },
+
+  setModelCurrent: function( model ) {
+
     this.currentModelChanged = model;
+
   },
+
   render: function() {
+
     var _this = this;
 
-    this.itemViews.forEach(function(itemView) {
-      _this.$el.append(itemView.render().el);
+    this.itemViews.forEach(function( itemView ) {
+
+      _this.$el.append( itemView.render().el );
+
     });
 
     return this;
+
+  },
+
+  remove: function() {
+
+    this.itemViews.forEach(function( view ) {
+
+      view.remove();
+
+    });
+
+    Backbone.View.prototype.remove.call( this );
+
   }
+
 });
 
 
 Application.VisualizationMenuItemView = Backbone.View.extend({
+
   tagName: 'div',
+
   className: 'visualizations-list-item',
+
   template: _.template(
     ['<div class="visualizations-list-item-thumb"><img class="responsiveImg" src="<%= imgUrl %>"></div>',
-    '<div class="visualizations-list-item-title"><%= title %></div>'].join('')),
+    '<div class="visualizations-list-item-title"><%= title %></div>'].join( '' ) ),
+
     initialize: function() {
-      this.listenTo(this.model, 'change:chosen', this.onChosenChanged);
+
+      this.listenTo( this.model, 'change:selected', this.onSelectedChanged );
+
+
     },
+
     events: {
+
       'click' : 'onClick'
+
     },
+
     render: function() {
-      this.$el.html(this.template(this.model.attributes));
+
+      this.$el.html( this.template( this.model.attributes ) );
+
       return this;
+
     },
-    onChosenChanged: function() {
-      this.$('.visualizations-list-item-thumb').toggleClass('is-clicked');
+
+    onSelectedChanged: function() {
+
+      this.$( '.visualizations-list-item-thumb' ).toggleClass( 'is-selected' );
+
     },
+
     onClick: function() {
-      this.setChosen();
+
+      this.setSelected();
+
     },
-    setChosen: function() {
-      this.model.set('chosen', true);
+
+    setSelected: function() {
+
+      this.model.set( 'selected', true );
+
     }
+
   });
 
 
   Application.VisualizationMenuItemDescriptionView = Backbone.View.extend({
+
     tagName: 'div',
+
     className: 'visualizations-list-item-description',
-    template: _.template('<p><%= description %></p>'),
+
+    template: _.template( '<p><%= description %></p>' ),
+
     initialize: function() {
-      this.listenTo(this.collection, 'change:chosen', this.onChosenChanged);
+
+      this.listenTo( this.collection, 'change:selected', this.onSelectedChanged );
+
     },
-    events: {
-    },
-    render: function(model) {
-      this.$el.html(this.template(model.attributes));
+
+    render: function( model ) {
+
+      this.$el.html( this.template( model.attributes ) );
+
       return this;
+
     },
-    onChosenChanged: function(model) {
-      this.render(model);
+
+    onSelectedChanged: function( model ) {
+
+      this.render( model );
+
     }
+
   });

@@ -1,17 +1,13 @@
 .datasources-list-menu {
-  position: relative;
-  min-width: $minMenuWidth;
-  width: $menuWidth;
-  height: calc(100% - 70px);
-  margin: 0 auto;
-  border: 1px solid red;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .datasources-list-menu-intro {
   width: 100%;
   font-size: 2rem;
   text-align: center;
-  border: 1px solid green;
 }
 
 
@@ -26,10 +22,6 @@
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
-
-  &.is-clicked {
-    border-color: #ffffff;
-  }
 }
 
 .datasources-list-item-title {
@@ -39,11 +31,16 @@
 
 .datasources-list-item-thumb {
   border: 1px solid $backgroundColor;
-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+  transition: 0.5s;
   &:hover {
     border-color: #ffffff;
+    transition: 0.5s;
   }
-  &.is-clicked {
+  &.is-selected {
     border-color: #ffffff;
   }
 }

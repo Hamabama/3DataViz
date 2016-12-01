@@ -1,39 +1,84 @@
 Application.DataSourcesMenuView = Backbone.View.extend({
+
   tagName: 'div',
+
   className: 'datasources-list-menu',
 
   initialize: function() {
-    this.dataSourcesMenuViewIntro = new Application.DataSourcesMenuViewIntro();
-    // this.visualizationMenuItems = new Application.VisualizationMenuItems({
-    //   collection: this.collection
-    // });
 
-    // this.visualizationMenuItemDescription = new Application.VisualizationMenuItemDescription({
-    //   collection: this.collection
-    // });
+    this.dataSourcesMenuIntroView = new Application.DataSourcesMenuIntroView();
 
-    this.listenTo(this.collection, 'change:chosen', this.onChosenChanged);
+    this.dataSourcesMenuItemsView = new Application.DataSourcesMenuItemsView({
+
+      collection: this.collection
+
+    });
+
+    this.dataSourcesMenuItemDescriptionView = new Application.DataSourcesMenuItemDescriptionView({
+
+      collection: this.collection
+
+    });
+
+    this.listenTo( this.collection, 'change:selected', this.onChosenChanged );
+
+    this.render();
 
   },
+
   render: function() {
-    this.$el.append(this.dataSourcesMenuViewIntro.render().el);
-    // this.$el.append(this.visualizationMenuItems.render().el);
-    // this.$el.append(this.visualizationMenuItemDescription.el);
+
+    this.$el.append( this.dataSourcesMenuIntroView.render().el );
+
+    this.$el.append( this.dataSourcesMenuItemsView.render().el );
+
+    this.$el.append( this.dataSourcesMenuItemDescriptionView.el );
+
     return this;
+
   },
+
   onChosenChanged: function() {
-    this.trigger('configuration:completed');
+
+    this.trigger( 'configuration:completed' );
+
+  },
+
+  detach: function() {
+
+    this.$el.detach();
+
+  },
+
+  remove: function() {
+
+    this.dataSourcesMenuIntroView.remove();
+
+    this.dataSourcesMenuItemsView.remove();
+
+    this.dataSourcesMenuItemDescriptionView.remove();
+
+    Backbone.View.prototype.remove.call( this );
+
   }
+
 });
 
-Application.DataSourcesMenuViewIntro = Backbone.View.extend({
+Application.DataSourcesMenuIntroView = Backbone.View.extend({
+
   tagName: 'div',
+
   className: 'datasources-list-menu-intro',
 
   initialize: function() {
   },
+
   render: function() {
-    this.$el.append('<p>Pick a data source:</p>');
+
+    this.$el.append( '<p>Pick a data source:</p>' );
+
     return this;
+
   }
+
 });
