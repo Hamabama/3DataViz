@@ -2,45 +2,81 @@ Application.DataSourcesMenuView = Backbone.View.extend({
 
   tagName: 'div',
 
-  className: 'datasources-list-menu',
+  className: 'datasources-menu-view',
 
   initialize: function() {
 
-    this.dataSourcesMenuIntroView = new Application.DataSourcesMenuIntroView();
+    this.menuModel = this.model;
+    this.dataSourcesCollection = this.collection;
 
     this.dataSourcesMenuItemsView = new Application.DataSourcesMenuItemsView({
 
-      collection: this.collection
+      collection: this.dataSourcesCollection, model: this.menuModel
 
     });
 
     this.dataSourcesMenuItemDescriptionView = new Application.DataSourcesMenuItemDescriptionView({
 
-      collection: this.collection
+      collection: this.dataSourcesCollection
 
     });
 
-    this.listenTo( this.collection, 'change:selected', this.onChosenChanged );
-
-    this.render();
+    this.listenTo( this.dataSourcesCollection, 'change:selected', this.onSelectedChanged );
 
   },
 
+  template: _.template( '<div class="datasources-list-menu-intro"><p>Pick a data source:</p></div>' ),
+
   render: function() {
 
-    this.$el.append( this.dataSourcesMenuIntroView.render().el );
+    this.$el.html( this.template );
 
     this.$el.append( this.dataSourcesMenuItemsView.render().el );
 
-    this.$el.append( this.dataSourcesMenuItemDescriptionView.el );
+    this.$el.append( this.dataSourcesMenuItemDescriptionView.empty().el );
+
+    this.setDataSourcesMenuCurrent();
 
     return this;
 
   },
 
-  onChosenChanged: function() {
+  show: function() {
 
-    this.trigger( 'configuration:completed' );
+    this.render();
+
+  },
+
+  setDataSourcesMenuCurrent: function() {
+
+    this.menuModel.set( 'childMenu', '' );
+
+    this.menuModel.set( 'parentMenu', 'visualization' );
+
+    this.menuModel.set( 'currentMenu', 'dataSources' );
+
+  },
+
+  onSelectedChanged: function( model ) {
+
+    var id = model.get( 'id' );
+
+    var next = this.menuModel.get( 'dataSources' )[ id ];
+
+    if ( next === 'map' ) {
+
+      this.menuModel.set( 'childMenu', 'map' );
+
+      this.menuModel.set( 'configurationCompleted', false );
+}
+
+    if ( next === 'query' ) {
+
+      this.menuModel.set( 'configurationCompleted', true );
+
+      this.menuModel.set( 'childMenu', '' );
+
+    }
 
   },
 
@@ -59,25 +95,6 @@ Application.DataSourcesMenuView = Backbone.View.extend({
     this.dataSourcesMenuItemDescriptionView.remove();
 
     Backbone.View.prototype.remove.call( this );
-
-  }
-
-});
-
-Application.DataSourcesMenuIntroView = Backbone.View.extend({
-
-  tagName: 'div',
-
-  className: 'datasources-list-menu-intro',
-
-  initialize: function() {
-  },
-
-  render: function() {
-
-    this.$el.append( '<p>Pick a data source:</p>' );
-
-    return this;
 
   }
 

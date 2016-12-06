@@ -1,6 +1,6 @@
 Application.MenuButtonView = Backbone.View.extend({
   tagName: 'div',
-  className: 'menu-button-frame',
+  className: 'menu-button-view',
   initialize: function() {
     this.burgerButton = '<svg class="menu-button-icon" viewBox="0 0 50 50"><g>' +
     '<path d="m 0,5 v 5 h 50 v -5"/>' +
@@ -23,7 +23,7 @@ Application.MenuButtonView = Backbone.View.extend({
 
 Application.CloseButtonView = Backbone.View.extend({
   tagName: 'div',
-  className: 'close-button-frame',
+  className: 'close-button-view',
   initialize: function() {
     this.closeButton = '<svg class="menu-button-icon-close" viewBox="0 0 50 50"><g>' +
     '<line x1="0" y1="25" x2="50" y2="25" stroke-width="5" />' +

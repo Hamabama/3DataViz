@@ -25,10 +25,7 @@ Application.VisualizationMenuItemsView = Backbone.View.extend({
 
     if ( visModel.get( 'selected' ) === false ) return;
 
-
-    this.getDataAboutVisualization( visModel );
-
-    this.setNextAndPrevious();
+    this.setVisualizationCurrent( visModel );
 
     if ( this.currentModelChanged !== undefined ) {
 
@@ -39,19 +36,9 @@ Application.VisualizationMenuItemsView = Backbone.View.extend({
 
   },
 
-  getDataAboutVisualization: function( visModel ) {
+  setVisualizationCurrent: function( visModel ) {
 
-    this.menuModel.set( 'visualization', visModel.get('visualization') );
-
-    this.menuModel.set( 'dataSources', visModel.get('dataSources') );
-
-  },
-
-  setNextAndPrevious: function() {
-
-    this.menuModel.set( 'next', 'dataSources' );
-
-    this.menuModel.set( 'previous', 'visualization' );
+    this.menuModel.set( 'visualization', visModel.get( 'id' ));
 
   },
 
@@ -153,6 +140,14 @@ Application.VisualizationMenuItemView = Backbone.View.extend({
     initialize: function() {
 
       this.listenTo( this.collection, 'change:selected', this.onSelectedChanged );
+
+    },
+
+    empty: function() {
+
+      this.$el.empty();
+
+      return this;
 
     },
 

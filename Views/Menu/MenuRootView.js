@@ -1,6 +1,6 @@
 Application.MenuRootView = Backbone.View.extend({
   tagName: 'div',
-  className: 'root-menu',
+  className: 'menu-root-view',
   initialize: function() {
 
     this.menuButtonView = new Application.MenuButtonView();

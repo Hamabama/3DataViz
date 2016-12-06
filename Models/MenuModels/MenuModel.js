@@ -1,14 +1,94 @@
 Application.MenuModel = Backbone.Model.extend({
+
   defaults: {
-    current: 'visualization',
-    next: '',
-    previous: '',
+
+    currentMenu: '',
+
+    parentMenu: '',
+
+    childMenu: '',
+
+    configurationCompleted: false,
+
     visualization: '',
-    dataSources: [],
-    dataSource: '',
-    map: '',
-    query: ''
+
+    visualizations: {
+
+      'countries': {
+
+        dataSources: [ 'spreadSheet', 'googleTrends', 'file', 'box' ],
+
+        attributes: {
+
+          mandatory: [ 'country', 'value', 'category', 'date' ],
+
+          optional: [ 'category', 'countrycode', 'label' ]
+
+        }
+
+      },
+
+      'points': {
+
+        dataSources: [ 'spreadSheet', 'file', 'box' ],
+
+        attributes: {
+
+          mandatory: [ 'latitude', 'longitude', 'label', 'value', 'category', 'date' ],
+
+          optional: [ 'label', 'value', 'category' ]
+
+        }
+
+      },
+
+      'pointcloud': {
+
+        dataSources: [ 'spreadSheet', 'file', 'box' ],
+
+        attributes: {
+
+          mandatory: [ 'x', 'y', 'z', 'value', 'category', 'date' ],
+
+          optional: [ 'value', 'category' ]
+
+        }
+
+      }
+
+    },
+
+    dataSources: {
+
+      'spreadSheet': 'map',
+      'file': 'map',
+      'box': 'map',
+      'googleTrends': 'query',
+
+    }
+
+  },
+
+  getDataSources: function( visualization ) {
+
+    return this.visualizations.get( visualization ).dataSources;
+
+  },
+
+  getAttributes: function( visualization ) {
+
+    return this.visualizations.get( visualization ).attributes;
+
+  },
+
+  getDataFormat: function( dataSource ) {
+
+    return this.dataSources.get( dataSource );
+
   }
+
+
 });
+
 
 Application.menuModel = new Application.MenuModel();

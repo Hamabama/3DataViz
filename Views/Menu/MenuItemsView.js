@@ -1,7 +1,10 @@
+/* this view is the holder for views: visualization, datasource, attributes */
+
 var Application = Application || {};
 
 Application.MenuItemsView = Backbone.View.extend({
-  className: 'menu-items-frame',
+
+  className: 'menu-items-view',
 
   initialize: function() {
 
@@ -19,11 +22,20 @@ Application.MenuItemsView = Backbone.View.extend({
 
     });
 
-    this.renderNextView(this.visualizationsMenuView);
+    this.attributesMenuView = new Application.AttributesMenuView({
+
+      model: [ Application.attributesModel, this.menuModel ]
+
+    });
+
 
   },
 
   render: function() {
+
+    this.$el.append( this.visualizationsMenuView.render().el );
+
+    this.currentView = this.visualizationsMenuView;
 
     return this;
 
@@ -41,23 +53,37 @@ Application.MenuItemsView = Backbone.View.extend({
 
     this.$el.html( view.el );
 
+    view.show();
+
     this.currentView = view;
 
   },
 
   getNextMenu: function() {
 
-    var next = this.menuModel.get( 'next' );
+    if ( this.menuModel.get( 'currentMenu' ) == 'visualization' ) {
 
-    if ( next == 'dataSources' ) this.renderNextView( this.dataSourcesMenuView );
+      this.renderNextView( this.dataSourcesMenuView );
+
+      return;
+
+    }
+
+    if ( this.menuModel.get( 'currentMenu' ) == 'dataSources' ) {
+
+      this.renderNextView( this.attributesMenuView );
+
+      return;
+
+    }
 
   },
 
   getPreviousMenu: function() {
 
-    var next = this.menuModel.get( 'previous' );
+    if ( this.menuModel.get( 'currentMenu' ) == 'dataSources' ) this.renderNextView( this.visualizationsMenuView );
 
-    if ( next == 'visualization' ) this.renderNextView( this.visualizationsMenuView );
+    if ( this.menuModel.get( 'currentMenu' ) == 'attributes' ) this.renderNextView( this.dataSourcesMenuView );
 
   }
 

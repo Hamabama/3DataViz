@@ -18,10 +18,14 @@ $backgroundColor: #383A56; // purple
   align-items: flex-start;
 }
 
+.instruction-intro {
+  text-align: center;
+}
+
 #instruction .split {
   position: relative;
   width: 200px;
-  margin: auto;
+  margin: 50px auto;
   border-bottom: 1px solid rgba(255,255,255,0.6);
   margin-top: 30px;
 }

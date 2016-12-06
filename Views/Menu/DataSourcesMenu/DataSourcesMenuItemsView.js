@@ -8,14 +8,57 @@ Application.DataSourcesMenuItemsView = Backbone.View.extend({
 
     var _this = this;
     this.itemViews = [];
+    this.menuModel = this.model;
 
-    this.collection.forEach(function( model ) {
+    this.listenTo( this.collection, 'change:selected', this.onSelectedChanged );
 
-      _this.itemViews.push(new Application.DataSourcesMenuItemView({ model: model }));
+  },
+
+  getSourcesList: function() {
+
+    var selectedVisualization = this.menuModel.get( 'visualization' );
+
+    return this.menuModel.get( 'visualizations' )[ selectedVisualization ].dataSources;
+
+  },
+
+  initSourcesList: function() {
+
+    var _this = this;
+    var itemView = {};
+
+    this.emptyViews();
+
+    var sourcesList = this.getSourcesList(this.menuModel);
+
+    _.each(sourcesList, function(item) {
+
+      var model = _this.collection.findWhere({ 'id': item });
+
+      model.attributes[ 'selected' ] = false; // in order to prevent firing a change event
+
+      if (model) itemView = new Application.DataSourcesMenuItemView({ model: model });
+
+      if (itemView) {
+
+        _this.itemViews.push(itemView);
+
+        _this.$el.append( itemView.render().el );
+
+      }
+    });
+
+  },
+
+  emptyViews: function() {
+
+    this.itemViews.forEach(function( view ) {
+
+    view.remove();
 
     });
 
-    this.listenTo( this.collection, 'change:selected', this.onSelectedChanged );
+    this.itemViews.length = 0;
 
   },
 
@@ -46,11 +89,7 @@ Application.DataSourcesMenuItemsView = Backbone.View.extend({
 
     var _this = this;
 
-    this.itemViews.forEach( function( itemView ) {
-
-      _this.$el.append( itemView.render().el );
-
-    });
+    this.initSourcesList();
 
     return this;
   },
@@ -137,6 +176,14 @@ Application.DataSourcesMenuItemView = Backbone.View.extend({
     render: function( model ) {
 
       this.$el.html( this.template( model.attributes ) );
+
+      return this;
+
+    },
+
+    empty: function() {
+
+      this.$el.empty();
 
       return this;
 

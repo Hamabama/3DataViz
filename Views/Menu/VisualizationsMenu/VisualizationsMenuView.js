@@ -1,36 +1,65 @@
 Application.VisualizationsMenuView = Backbone.View.extend({
   tagName: 'div',
-  className: 'visualizations-list-menu',
+  className: 'visualizations-menu-view',
 
   initialize: function() {
 
-    this.visualizationMenuIntroView = new Application.VisualizationsMenuIntroView();
+    this.menuModel = this.model;
+    this.visualizationsCollection = this.collection;
 
     this.visualizationMenuItemsView = new Application.VisualizationMenuItemsView({
 
-      collection: this.collection, model: this.model
+      collection: this.visualizationsCollection, model: this.menuModel
 
     });
 
     this.visualizationMenuItemDescriptionView = new Application.VisualizationMenuItemDescriptionView({
 
-      collection: this.collection
+      collection: this.visualizationsCollection
 
     });
 
-    this.render();
+    this.listenTo( this.visualizationsCollection, 'change:selected', this.onVisualizationSelected );
 
   },
 
+  template: _.template( '<div class="visualizations-list-menu-intro"><p>Pick a visualization template:</p></div>' ),
+
   render: function() {
 
-    this.$el.append( this.visualizationMenuIntroView.render().el );
+    this.$el.html( this.template );
 
     this.$el.append( this.visualizationMenuItemsView.render().el );
 
     this.$el.append( this.visualizationMenuItemDescriptionView.el );
 
+    this.setVisualizationMenuCurrent();
+
     return this;
+
+  },
+
+  show: function() {
+
+    this.visualizationMenuItemDescriptionView.empty();
+
+    this.setVisualizationMenuCurrent();
+
+    return this;
+
+  },
+
+  setVisualizationMenuCurrent: function() {
+
+    this.menuModel.set( 'parentMenu', '' );
+
+    this.menuModel.set( 'currentMenu', 'visualization' );
+
+  },
+
+  onVisualizationSelected: function() {
+
+    this.model.set( 'childMenu', 'dataSources' );
 
   },
 
@@ -53,26 +82,6 @@ Application.VisualizationsMenuView = Backbone.View.extend({
   }
 
 });
-
-Application.VisualizationsMenuIntroView = Backbone.View.extend({
-  tagName: 'div',
-  className: 'visualizations-list-menu-intro',
-
-  initialize: function() {
-  },
-
-  render: function() {
-
-    this.$el.append( '<p>Pick a visualization template:</p>' );
-
-    return this;
-
-  }
-
-});
-
-
-
 
 //
 // Application._VisualizationsView = Backbone.View.extend({
