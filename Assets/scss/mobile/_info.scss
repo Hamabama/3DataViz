@@ -12,9 +12,8 @@ $backgroundColor: #383A56; // purple
 
 .info-view {
   position: relative;
-  margin: 30px auto 0 auto;
-  width: 60%;
   height: 100%;
+  margin: 20px 40px;
   align-items: flex-start;
 }
 
@@ -35,9 +34,8 @@ $backgroundColor: #383A56; // purple
 
 .info-header-name {
   width: 100%;
-  margin-bottom: 30px;
   text-align: center;
-  //padding-right: 150px;
+  padding: 0 20px;
   letter-spacing: 2px;
 }
 
@@ -50,14 +48,13 @@ $backgroundColor: #383A56; // purple
 }
 
 .info-intro {
-  width: 100%;
   text-align: center;
 }
 
 .info-block-split {
   position: relative;
   width: 200px;
-  margin: 50px auto;
+  margin: 50px auto 20px auto;
   border-bottom: 1px solid rgba(255,255,255,0.6);
   margin-top: 30px;
 }
@@ -71,33 +68,33 @@ $backgroundColor: #383A56; // purple
     margin-left: 10px;
   }
 
-  h3 {
-    margin-bottom: 30px;
-  }
 }
 
 .info-instruction-steps {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .info-instruction-steps .step {
   text-align: center;
+  margin-top: 20px;
 }
 
 .info-instruction-steps .next {
   width: 40px;
+  margin-top: 20px;
 }
 
 .info-demos {
-  display: flex;
-  justify-content: center;
+  white-space: nowrap;
+  overflow-x: scroll;
 }
 
 .info-demo-item {
-  margin: 20px;
+  display: inline-block;
+  margin: 10px 20px 10px 0;
   border-radius: 5px;
-  padding: 5px;
 }
 
 .info-demo-item img {
@@ -120,9 +117,7 @@ $backgroundColor: #383A56; // purple
 
 .info-footer {
   width: 100%;
-  display: flex;
-  display: -ms-flexbox;
-  display: -webkit-flex;
+  margin-bottom: 30px;
 }
 
 .info-footer-feedback {
@@ -164,4 +159,8 @@ $backgroundColor: #383A56; // purple
   bottom: 25px;
   font-size: 40px;
   z-index: 90;
+}
+
+@media (max-width: 412px) {
+
 }

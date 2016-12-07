@@ -23,7 +23,7 @@ Application.VisualizationsMenuView = Backbone.View.extend({
 
   },
 
-  template: _.template( '<div class="visualizations-list-menu-intro"><p>Pick a visualization template:</p></div>' ),
+  template: _.template( '<div class="visualizations-list-menu-intro"><h2>Pick a visualization template:</h2></div>' ),
 
   render: function() {
 

@@ -25,7 +25,7 @@ Application.DataSourcesMenuView = Backbone.View.extend({
 
   },
 
-  template: _.template( '<div class="datasources-list-menu-intro"><p>Pick a data source:</p></div>' ),
+  template: _.template( '<div class="datasources-list-menu-intro"><h2>Pick a data source:</h2></div>' ),
 
   render: function() {
 
