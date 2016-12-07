@@ -914,7 +914,7 @@ img {
   width: 100%;
   height: 100%; }
 
-.instruction-frame {
+.info-frame {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -923,7 +923,7 @@ img {
   overflow-y: scroll;
   overflow-x: hidden; }
 
-#instruction {
+.info-view {
   position: relative;
   margin: 30px auto 0 auto;
   width: 60%;
@@ -931,112 +931,102 @@ img {
   -ms-flex-align: start;
   align-items: flex-start; }
 
-.instruction-intro {
-  text-align: center; }
-
-#instruction .split {
-  position: relative;
-  width: 200px;
-  margin: 50px auto;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-  margin-top: 30px; }
-
-#instruction::-webkit-scrollbar {
+.info-view::-webkit-scrollbar {
   display: none; }
 
-#instruction .demoList {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  justify-content: center; }
-
-#instruction .demoItem {
-  margin: 20px;
-  border-radius: 5px;
-  padding: 5px; }
-
-#instruction .demoItem img {
-  border: 1px solid #383A56;
-  box-shadow: 0 8px 6px -6px black;
-  transition: 0.5s; }
-  #instruction .demoItem img:hover {
-    border-color: #fff;
-    transition: 0.5s; }
-
-#instruction .demoTitle {
-  text-align: center;
-  margin-top: 10px; }
-
-#instruction a {
+.info-view a {
   text-decoration: none; }
 
-#instructionHeader {
+.info-header {
   width: 100%;
   display: flex;
   display: -ms-flexbox;
   display: -webkit-flex; }
 
-#instructionHeaderName {
+.info-header-name {
   width: 100%;
   margin-bottom: 30px;
   text-align: center;
   padding-right: 150px;
   letter-spacing: 2px; }
 
-#instructionFooter {
-  width: 100%;
-  display: flex;
-  display: -ms-flexbox;
-  display: -webkit-flex; }
-
-#forkme {
+.info-forkme {
   width: 150px;
   height: auto;
   position: relative;
   left: -30px;
   border: 0; }
 
-#instruction header h1 {
-  margin-top: 0;
-  margin-bottom: 30px;
-  text-align: center;
-  color: #fff; }
+.info-intro {
+  text-align: center; }
 
-#instruction .inner h3 {
-  border-bottom: 1px solid #56567A;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-  color: #fff; }
+.info-block-split {
+  position: relative;
+  width: 200px;
+  margin: 50px auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  margin-top: 30px; }
 
-#instruction .feedback {
+.info-instruction {
   margin-bottom: 30px; }
+  .info-instruction a {
+    vertical-align: middle;
+    margin-left: 10px; }
 
-#instruction .demo a {
-  vertical-align: middle;
-  margin-left: 10px; }
-
-#instruction .steps {
+.info-instruction-steps {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
   justify-content: space-around; }
 
-#instruction .steps .step {
+.info-instruction-steps .step {
   text-align: center; }
 
-#instruction .contacts {
+.info-instruction-steps .next {
+  width: 40px; }
+
+.info-demos {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.info-demo-item {
+  margin: 20px;
+  border-radius: 5px;
+  padding: 5px; }
+
+.info-demo-item img {
+  border: 1px solid #383A56;
+  box-shadow: 0 8px 6px -6px black;
+  transition: 0.5s; }
+  .info-demo-item img:hover {
+    border-color: #fff;
+    transition: 0.5s; }
+
+.info-demo-title {
+  text-align: center;
+  margin-top: 10px; }
+
+.info-footer {
+  width: 100%;
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex; }
+
+.info-footer-feedback {
+  margin-bottom: 30px; }
+
+.info-footer-contacts {
   margin-bottom: 4px; }
-
-#instruction .contacts p {
-  display: inline; }
-
-#instruction .contacts ul {
-  display: inline;
-  padding-left: 0; }
-
-#instruction .contacts ul li {
-  display: inline;
-  margin-right: 8px; }
+  .info-footer-contacts p {
+    display: inline; }
+  .info-footer-contacts ul {
+    display: inline;
+    padding-left: 0; }
+  .info-footer-contacts ul li {
+    display: inline;
+    margin-right: 8px; }
 
 #helpButton {
   cursor: pointer;
@@ -1087,17 +1077,23 @@ img {
 .menu-button-icon {
   width: 100%;
   height: 100%;
-  fill: #e5e5e5; }
+  fill: #fff;
+  opacity: 0.6;
+  transition: 0.2s; }
   .menu-button-icon:hover {
-    fill: #ffffff; }
+    opacity: 1;
+    transition: 0.5s; }
 
 .menu-button-icon-close {
   width: 100%;
   height: 100%;
-  stroke: #e5e5e5;
-  transform: rotate(45deg); }
+  stroke: #fff;
+  opacity: 0.6;
+  transform: rotate(45deg);
+  transition: 0.2s; }
   .menu-button-icon-close:hover {
-    stroke: #ffffff; }
+    opacity: 1;
+    transition: 0.5s; }
 
 .menu-controls {
   position: relative;
@@ -1115,19 +1111,23 @@ img {
 
 .menu-controls-back-view svg {
   transform: rotate(180deg);
-  fill: #e5e5e5;
-  transition: 0.5s; }
+  fill: #fff;
+  opacity: 0.6;
+  transition: 0.2s;
+  height: 70px; }
 
 .menu-controls-back-view svg:hover {
-  fill: #fff;
+  opacity: 1;
   transition: 0.5s; }
 
 .menu-controls-next-view svg {
-  fill: #e5e5e5;
-  transition: 0.5s; }
+  fill: #fff;
+  opacity: 0.6;
+  transition: 0.2s;
+  height: 70px; }
 
 .menu-controls-next-view svg:hover {
-  fill: #fff;
+  opacity: 1;
   transition: 0.5s; }
 
 .menu-controls-back-view {
@@ -1139,11 +1139,21 @@ img {
 .menu-controls-visualize {
   position: relative;
   margin: 0 auto;
-  width: 100px;
-  height: 100%;
-  border: 1px solid red;
+  width: 20%;
+  max-width: 300px;
+  height: 64px;
+  border: 3px solid #fff;
+  opacity: 0.6;
+  border-radius: 5px;
   cursor: pointer;
-  display: none; }
+  display: none;
+  transition: 0.2s;
+  font-size: 2rem;
+  line-height: 64px;
+  text-align: center; }
+  .menu-controls-visualize:hover {
+    opacity: 1;
+    transition: 0.5s; }
 
 .visualizations-menu-view {
   position: absolute;

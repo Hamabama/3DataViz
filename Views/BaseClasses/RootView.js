@@ -16,7 +16,7 @@ Application.RootView = Backbone.View.extend({
     this.notifBox = new Application.NotificationsCenter();
     this.infocenter = new Application.VizInfoCenter();
     this.titleBox = new Application.VizTitleCenter();
-    this.instruction = new Application.InstructionView();
+    this.infoPage = new Application.InfoView();
 
     this.rootView = null;
     this.collections = [];
@@ -38,7 +38,7 @@ Application.RootView = Backbone.View.extend({
     return this;
   },
   submitOn: function() {
-    $("#instruction").hide();
+    $(".info-view").hide();
     this.createCollection();
   },
   visualizeOn: function() {

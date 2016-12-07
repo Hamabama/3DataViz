@@ -1,9 +1,9 @@
-Application.InstructionView = Backbone.View.extend({
+Application.InfoView = Backbone.View.extend({
   tagName:'div',
-  className: 'instruction-frame',
+  className: 'info-frame',
   initialize: function() {
     var that = this;
-    $.get('Templates/instruction.html', function(data) {
+    $.get('Templates/info.html', function(data) {
       template = _.template(data, {});
       that.$el.html(template);
       $('.application-frame').prepend(that.$el);

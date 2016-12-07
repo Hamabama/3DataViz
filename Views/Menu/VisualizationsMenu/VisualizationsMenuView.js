@@ -55,6 +55,8 @@ Application.VisualizationsMenuView = Backbone.View.extend({
 
     this.menuModel.set( 'currentMenu', 'visualization' );
 
+    this.menuModel.set( 'configurationCompleted', false );
+
   },
 
   onVisualizationSelected: function() {

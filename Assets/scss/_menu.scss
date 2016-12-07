@@ -1,5 +1,7 @@
 $minMenuWidth: 600px;
 $menuWidth: 60%;
+$controlsHeight: 70px;
+$opacity: 0.6;
 
 .menu-root-view {
 }
@@ -41,21 +43,27 @@ $menuWidth: 60%;
 .menu-button-icon {
   width: 100%;
   height: 100%;
-  fill: #e5e5e5;
+  fill: #fff;
+  opacity: $opacity;
+  transition: 0.2s;
 
   &:hover {
-    fill: #ffffff;
+    opacity: 1;
+    transition: 0.5s;
   }
 }
 
 .menu-button-icon-close {
   width: 100%;
   height: 100%;
-  stroke: #e5e5e5;
+  stroke: #fff;
+  opacity: $opacity;
   transform: rotate(45deg);
+  transition: 0.2s;
 
   &:hover {
-    stroke: #ffffff;
+    opacity: 1;
+    transition: 0.5s;
   }
 }
 
@@ -63,7 +71,7 @@ $menuWidth: 60%;
   position: relative;
   min-width: $minMenuWidth;
   width: $menuWidth;
-  height: 70px;
+  height: $controlsHeight;
   margin: 0 auto;
   bottom: 100px;
 }
@@ -77,23 +85,28 @@ $menuWidth: 60%;
 
 .menu-controls-back-view svg {
   transform: rotate(180deg);
-  fill: #e5e5e5;
-  transition: 0.5s;
+  fill: #fff;
+  opacity: $opacity;
+  transition: 0.2s;
+  height: $controlsHeight;
 }
 
 .menu-controls-back-view svg:hover {
-  fill: #fff;
+  opacity: 1;
   transition: 0.5s;
 }
 
 .menu-controls-next-view svg {
-  fill: #e5e5e5;
-  transition: 0.5s;
+  fill: #fff;
+  opacity: $opacity;
+  transition: 0.2s;
+  height: $controlsHeight;
 }
 
 .menu-controls-next-view svg:hover {
-  fill: #fff;
+  opacity: 1;
   transition: 0.5s;
+
 }
 
 .menu-controls-back-view {
@@ -107,9 +120,21 @@ $menuWidth: 60%;
 .menu-controls-visualize {
   position: relative;
   margin: 0 auto;
-  width: 100px;
-  height: 100%;
-  border: 1px solid red;
+  width: 20%;
+  max-width: 300px;
+  height: ($controlsHeight - 6px);
+  border: 3px solid #fff;
+  opacity: 0.6;
+  border-radius: 5px;
   cursor: pointer;
   display: none;
+  transition: 0.2s;
+  font-size: 2rem;
+  line-height: ($controlsHeight - 6px);
+  text-align: center;
+
+  &:hover {
+    opacity: 1;
+    transition: 0.5s;
+  }
 }

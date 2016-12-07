@@ -100,6 +100,8 @@ Application.MenuControlsVisualizeButton = Backbone.View.extend({
 
   initialize: function() {},
 
+  template: _.template('VISUALIZE'),
+
   events: {
 
     'click': 'onClick'
@@ -108,8 +110,10 @@ Application.MenuControlsVisualizeButton = Backbone.View.extend({
 
   render: function() {
 
+    this.$el.append( this.template );
+
     return this;
-    
+
   },
 
   show: function() {
