@@ -1103,8 +1103,7 @@ img {
 .menu-controls-next-view, .menu-controls-back-view {
   position: absolute;
   width: 50px;
-  cursor: pointer;
-  display: none; }
+  cursor: pointer; }
 
 .menu-controls-back-view svg {
   transform: rotate(180deg);
@@ -1128,10 +1127,18 @@ img {
   transition: 0.5s; }
 
 .menu-controls-back-view {
-  left: 0; }
+  left: -200px;
+  transition: left 0.2s ease-in-out; }
 
 .menu-controls-next-view {
-  right: 20px; }
+  right: -200px;
+  transition: right 0.3s ease-in-out; }
+
+.animate-next {
+  right: 0; }
+
+.animate-back {
+  left: 0; }
 
 .menu-controls-visualize {
   position: relative;
@@ -1159,7 +1166,8 @@ img {
 
 .visualizations-list-menu-intro {
   width: 100%;
-  text-align: center; }
+  text-align: center;
+  font-size: 2rem; }
 
 .visualizations-list-items {
   white-space: nowrap;
@@ -1201,7 +1209,8 @@ img {
 
 .datasources-list-menu-intro {
   width: 100%;
-  text-align: center; }
+  text-align: center;
+  font-size: 2rem; }
 
 .datasources-list-items {
   white-space: nowrap;

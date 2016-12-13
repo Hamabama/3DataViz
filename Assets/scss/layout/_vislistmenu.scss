@@ -1,21 +1,27 @@
-.datasources-menu-view {
+.visualizations-menu-view {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.datasources-list-menu-intro {
+.visualizations-list-menu-intro {
   width: 100%;
   text-align: center;
+  font-size: 2rem;
 }
 
-
-.datasources-list-items {
+.visualizations-list-items {
   white-space: nowrap;
   overflow-x: scroll;
+
+  @include respond-to(small) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 
-.datasources-list-item {
+.visualizations-list-item {
   display: inline-block;
   margin: 20px;
   padding: 5px;
@@ -24,12 +30,12 @@
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.datasources-list-item-title {
+.visualizations-list-item-title {
   margin-top: 10px;
   text-align: center;
 }
 
-.datasources-list-item-thumb {
+.visualizations-list-item-thumb {
   border: 1px solid $backgroundColor;
   border-radius: 5px;
   -webkit-box-shadow: 0 8px 6px -6px black;
@@ -45,7 +51,7 @@
   }
 }
 
-.datasources-list-item-description {
+.visualizations-list-item-description {
   position: relative;
   width: 100%;
   padding-top: 50px;

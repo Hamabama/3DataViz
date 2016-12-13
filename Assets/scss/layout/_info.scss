@@ -12,10 +12,14 @@ $backgroundColor: #383A56; // purple
 
 .info-view {
   position: relative;
-  margin: 30px auto 0 auto;
-  width: 60%;
+  margin: 20px 40px;
   height: 100%;
   align-items: flex-start;
+
+  @include respond-to(small) {
+    margin: 30px auto 0 auto;
+    width: 60%;
+  }
 }
 
 .info-view::-webkit-scrollbar {
@@ -36,7 +40,7 @@ $backgroundColor: #383A56; // purple
 .info-header-name {
   width: 100%;
   margin-bottom: 30px;
-  text-align: center;
+    padding: 0 20px;
   //padding-right: 150px;
   letter-spacing: 2px;
 }
@@ -50,16 +54,25 @@ $backgroundColor: #383A56; // purple
 }
 
 .info-intro {
-  width: 100%;
+
   text-align: center;
+
+  @include respond-to(small) {
+      width: 100%;
+  }
 }
 
 .info-block-split {
   position: relative;
   width: 200px;
-  margin: 50px auto;
+  margin: 50px auto 20px auto;
   border-bottom: 1px solid rgba(255,255,255,0.6);
   margin-top: 30px;
+
+  @include respond-to(small) {
+      margin: 50px auto;
+  }
+
 }
 
 .info-instruction {
@@ -71,31 +84,37 @@ $backgroundColor: #383A56; // purple
     margin-left: 10px;
   }
 
-  h3 {
-    margin-bottom: 30px;
-  }
 }
 
 .info-instruction-steps {
   display: flex;
   justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .info-instruction-steps .step {
   text-align: center;
+  margin-top: 20px;
 }
 
 .info-instruction-steps .next {
   width: 40px;
+    margin-top: 20px;
 }
 
 .info-demos {
+  white-space: nowrap;
+  overflow-x: scroll;
+
+  #include respond-to(small) {
   display: flex;
   justify-content: center;
 }
+}
 
 .info-demo-item {
-  margin: 20px;
+  display: inline-block;
+  margin: 10px 20px 10px 0;
   border-radius: 5px;
   padding: 5px;
 }
