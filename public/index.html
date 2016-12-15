@@ -1,0 +1,101 @@
+<!DOCTYPE>
+<meta charset="utf-8">
+<html prefix="og: http://ogp.me/ns#">
+<link rel="stylesheet" type="text/css" href="/src/Assets/css/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="3D Web Data Visualization Tool" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Our main focus in this project is creating a mechanism or tool that can process various types of data formats and visualize them on a specific visualization template that we have built so that users can visualize their data in the 3D world without knowing about much of the technologies around it."
+    />
+    <meta property="og:url" content="http://seneca-cdot.github.io/3DataViz/" />
+    <meta property="og:image" content="http://seneca-cdot.github.io/3DataViz/Assets/images/logo.png" />
+</head>
+
+<body>
+    <div class="application-frame">
+        <div id="startScreen">
+            <div class="notification">LOADING...</div>
+        </div>
+    </div>
+</body>
+<script id="rootGlobeViewTemplate" type="text/html"></script>
+<script id="globeViewTemplate" type="text/html"></script>
+<!-- structure -->
+<script type="text/javascript" src="/src/js/Libraries/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/src/js/Libraries/underscore-min.js"></script>
+<script type="text/javascript" src="/src/js/Libraries/backbone-min.js"></script>
+<script type="text/javascript" src='/src/js/Libraries/randomColor.min.js'></script>
+<script type="text/javascript" src='/src/js/Libraries/require.js'></script>
+<script type="text/javascript" src="https://app.box.com/js/static/select.js"></script>
+<!-- 3D library -->
+<script src="/src/js/Libraries/three.js"></script>
+<!-- source code loading -->
+<script type="text/javascript" src='/src/js/Config/Config.js'></script>
+<script type="text/javascript" src='/src/js/DataProcessor/DataProcessor.js'></script>
+<script type="text/javascript" src='/src/js/Views/GlobeDecorators/BaseGlobeDecorator.js'></script>
+<script type="text/javascript" src='/src/js/Views/BaseClasses/BaseView.js'></script>
+<script type="text/javascript" src='/src/js/Helpers/Debug.js'></script>
+<script type="text/javascript" src='/src/js/Helpers/Filter.js'></script>
+<script type="text/javascript" src='/src/js/Helpers/DataStructures.js'></script>
+<script type="text/javascript" src='/src/js/Helpers/Examples.js'></script>
+<script type="text/javascript" src='/src/js/Helpers/Helper.js'></script>
+<script type="text/javascript" src='/src/js/DataProcessor/ParserFactory.js'></script>
+<script type="text/javascript" src='/src/js/DataProcessor/TransformerFactory.js'></script>
+<script type="text/javascript" src='/src/js/Events/events.js'></script>
+<script type="text/javascript" src='/src/js/Libraries/OrbitControls.js'></script>
+<script type="text/javascript" src='/src/js/Libraries/stats.js'></script>
+<script type="text/javascript" src='/src/js/Libraries/tween.min.js'></script>
+<script type="text/javascript" src='/src/js/Libraries/map3d.js'></script>
+<script type="text/javascript" src='/src/js/Libraries/papaparse.js'></script>
+<!-- ROUTER -->
+<script type="text/javascript" src='/src/js/Routes/RootRouter.js'></script>
+<!-- CANVAS VIEWS -->
+<script type="text/javascript" src='/src/js/Views/GlobeDecorators/GeometryGlobeDecorator.js'></script>
+<script type="text/javascript" src='/src/js/Views/GlobeDecorators/TextureGlobeDecorator.js'></script>
+<script type="text/javascript" src='/src/js/Views/GlobeDecorators/GlobeDecoratorFactory.js'></script>
+<!-- MENU VIEWS -->
+<script type="text/javascript" src='/src/js/Views/Menu/MenuRootView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/MenuButtonsView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/MenuControlsView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/MenuItemsView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/MenuItemView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/MenuView.js'></script>
+
+<script type="text/javascript" src='/src/js/Views/Menu/VisualizationsMenuView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/VisualizationMenuItemsViews.js'></script>
+
+<script type="text/javascript" src='/src/js/Views/Menu/VisualTemplatesMenu/VisualTemplatesMenuItemsView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/VisualTemplatesMenu/VisualTemplatesMenuView.js'></script>
+
+<script type="text/javascript" src='/src/js/Views/Menu/DataSourcesMenu/DataSourcesMenuView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/DataSourcesMenu/DataSourcesMenuItemsView.js'></script>
+
+<script type="text/javascript" src='/src/js/Views/Menu/AttributesMenu/AttributesMenuView.js'></script>
+
+<script type="text/javascript" src='/src/js/Views/Menu/DemosMenu/DemosMenuView.js'></script>
+
+<script type="text/javascript" src='/src/js/Views/Menu/ControlPanelRootView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/ControlElementsGlobeView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/Matcher.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/FiltersView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/IntroView.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/Timeline.js'></script>
+<script type="text/javascript" src='/src/js/Views/Menu/CameraSwitcherView.js'></script>
+<script type="text/javascript" src='/src/js/Views/BaseClasses/RootView.js'></script>
+<script type="text/javascript" src='/src/js/Views/BaseClasses/RootGlobeView.js'></script>
+<script type="text/javascript" src='/src/js/Views/BaseClasses/BaseGlobeView.js'></script>
+<script type="text/javascript" src='/src/js/Views/BaseClasses/BasePointCloudView.js'></script>
+<!-- MODELS -->
+<script type="text/javascript" src='/src/js/Models/BaseClasses/BaseGlobeModel.js'></script>
+<script type="text/javascript" src='/src/js/Models/MenuModels/MenuModel.js'></script>
+<script type="text/javascript" src='/src/js/Models/MenuModels/MenuItemsModel.js'></script>
+<script type="text/javascript" src='/src/js/Models/MenuModels/VisTemplatesModel.js'></script>
+<script type="text/javascript" src='/src/js/Models/MenuModels/VisualizationsModel.js'></script>
+<script type="text/javascript" src='/src/js/Models/MenuModels/DataSourcesModel.js'></script>
+<script type="text/javascript" src='/src/js/Application.js'></script>
+
+</html>

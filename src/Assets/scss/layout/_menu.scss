@@ -1,0 +1,81 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: $backgroundColor;
+  background: linear-gradient(#5C258D , #4389A2);
+  z-index: 1;
+  transform: translateY(-100%);
+  transition: 0.3s ease;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.menu--drop {
+  transform: translateY(0);
+}
+
+.menu__items {
+  position: relative;
+  top: 20%;
+  width: 100%;
+  height: 400px;
+  margin: 0 0 0 20%;
+  padding-left: 10px;
+  transition: all 0.3s ease;
+  opacity: 0;
+
+  @include respond-to(large) {
+    width: 20%;
+    margin: 0 0 0 45%;
+  }
+
+}
+
+.menu__items--show {
+  opacity: 1;
+}
+
+
+.menu__item {
+  position: relative;
+  width: 100%;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+}
+
+.menu-items-view {
+  position: relative;
+  min-width: $minMenuWidth;
+  width: $menuWidth;
+  height: calc(100% - 70px);
+  margin: 0 auto;
+
+  @include respond-to(small) {
+    min-width: 600px;
+    width: 60%;
+  }
+}
+
+.menu-controls {
+  position: relative;
+  min-width: $minMenuWidth;
+  width: $menuWidth;
+  height: $controlsHeight;
+  margin: 0 auto;
+  bottom: 50px;
+
+  @include respond-to(small) {
+    bottom: 100px;
+    min-width: 600px;
+    width: 60%;
+  }
+}
