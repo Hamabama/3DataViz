@@ -13,8 +13,8 @@ Application.MenuButtonView = Backbone.View.extend({
     // '</g></svg>';
 
     this.menuButton = $( '<div class="menu__button__icon">' +
-                         '<span></span><span></span><span></span>' +
-                         ' </div>' );
+    '<span></span><span></span><span></span>' +
+    ' </div>' );
 
     this.isOpen = false;
 
