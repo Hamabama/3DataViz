@@ -6,12 +6,13 @@
   //margin: 0 auto;
   width: 50%;
   height: 50px;
-  border: 3px solid #fff;
+  border: 2px solid #fff;
   // opacity: 0.6;
   border-radius: 5px;
   cursor: pointer;
   font-size: 2rem;
   line-height: 50px;
+  font-weight: 300;
   text-align: center;
   transform: translateX(-50%);
   // transform: translatex(-50%);
@@ -52,7 +53,7 @@
 .menu__button__icon span {
   display: block;
   position: absolute;
-  height: 3px;
+  height: 2px;
   width: 100%;
   background-color: #fff;
   border-radius: 9px;
@@ -92,13 +93,10 @@
 
 .arrow {
   position: relative;
-  // top: 20%;
   width: 50px;
   height: 70px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  transform: scale(0.8);
-
 }
 
 .next {
@@ -113,11 +111,12 @@
   position: fixed;
   bottom: 12px;
   transition: all 0.5s ease-in-out;
+  transform: scale(0.8);
 
 
   @include respond-to(large) {
-    top: 50%;
-    transform: translateY(-50%);
+    top: 45%;
+    //transform: scale(0.8) translateY(-50%);
   }
 
 }
@@ -139,7 +138,7 @@
 }
 
 .back {
-  transform: rotate(180deg) scale(0.8);
+  transform: scale(0.8) rotate(180deg);
 
   &:hover {
     left: -5px;
@@ -148,7 +147,7 @@
 
 .arrow span {
   position: absolute;
-  height: 4px;
+  height: 3px;
   width: 100%;
   background: #fff;
   border-radius: 9px;
@@ -160,6 +159,6 @@
 }
 
 .arrow span:nth-child(2) {
-  top:  48px;
+  top:  49px;
   transform: rotate(135deg);
 }
