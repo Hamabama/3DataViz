@@ -1,37 +1,43 @@
 
-.menu-controls-visualize {
-  position: relative;
-  margin: 0 auto;
-  width: 20%;
-  max-width: 50%;
-  height: ($controlsHeight - 6px);
+.button__visualize {
+  position: fixed;
+  bottom: -60px;
+  left: 50%;
+  //margin: 0 auto;
+  width: 50%;
+  height: 50px;
   border: 3px solid #fff;
-  opacity: 0.6;
+  // opacity: 0.6;
   border-radius: 5px;
   cursor: pointer;
-  display: none;
-  transition: 0.2s;
   font-size: 2rem;
-  line-height: ($controlsHeight - 6px);
+  line-height: 50px;
   text-align: center;
+  transform: translateX(-50%);
+  // transform: translatex(-50%);
+  transition: all 0.2s ease;
 
   &:hover {
-    opacity: 1;
-    transition: 0.5s;
+    transform: translateY(-80px) scale(0.95) translateX(-52.5%);
+  }
+
+  @include respond-to(large) {
+    width: 15%;
+    //bottom: -5%;
   }
 }
 
-.menu__button, .close-button-view {
+.button__visualize--show {
+  transform: translateY(-80px) translateX(-50%);
+}
+
+.menu__button {
   position: fixed;
   top: 20px;
   right: 20px;
   width: 30px;
   height: 25px;
   cursor: pointer;
-  z-index: 2;
-}
-
-.close-button-view {
   z-index: 2;
 }
 
@@ -46,7 +52,7 @@
 .menu__button__icon span {
   display: block;
   position: absolute;
-  height: 4px;
+  height: 3px;
   width: 100%;
   background-color: #fff;
   border-radius: 9px;
@@ -86,12 +92,13 @@
 
 .arrow {
   position: relative;
-  top: 20%;
+  // top: 20%;
   width: 50px;
   height: 70px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   transform: scale(0.8);
+
 }
 
 .next {
@@ -102,20 +109,33 @@
 
 }
 
-.next__frame {
-  position: absolute;
-  right: 10px;
-  top: 80%;
+.next__frame, .back__frame {
+  position: fixed;
+  bottom: 12px;
   transition: all 0.5s ease-in-out;
 
-  @include respond-to(large) {
-    top: 40%;
-  };
 
+  @include respond-to(large) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+}
+
+.next__frame {
+  right: 10px;
+}
+
+.back__frame {
+  left: 10px;
 }
 
 .next__frame.off-screen {
   right: -1000px;
+}
+
+.back__frame.off-screen {
+  left: -1000px;
 }
 
 .back {
@@ -125,22 +145,6 @@
     left: -5px;
   }
 }
-
-.back__frame {
-  position: absolute;
-  left: 10px;
-  top: 80%;
-  transition: all 0.5s ease-in-out;
-
-  @include respond-to(large) {
-    top: 40%;
-  };
-}
-
-.back.off-screen {
-  left: -1000px;
-}
-
 
 .arrow span {
   position: absolute;

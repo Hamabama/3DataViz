@@ -6,10 +6,10 @@
   height: 100%;
   overflow: hidden;
   background-color: $backgroundColor;
-  background: linear-gradient(#5C258D , #4389A2);
+  // background: linear-gradient(#5C258D , #4389A2);
   z-index: 1;
   transform: translateY(-100%);
-  transition: 0.3s ease;
+  transition: 0.3s ease-in-out;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 

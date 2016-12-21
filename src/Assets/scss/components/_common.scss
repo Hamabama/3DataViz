@@ -1,0 +1,26 @@
+.item--selected {
+  border-color: #fff;
+}
+
+.item__description {
+  position: relative;
+  // width: 100%;
+  padding-top: 10px;
+  text-align: center;
+  margin: 0 20px;
+  font-size: 1.3em;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all .2s ease;
+}
+
+.item__description--show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.responsiveImg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

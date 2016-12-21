@@ -12,11 +12,13 @@ Application.DemoItemsLine = Backbone.View.extend({
     this.subViews = [];
     this.currentViewIndex = 0;
     this.currentView;
+    
     this.collection.each( function( model ) {
 
-      _this.subViews.push( new Application.DemoItemView( { model: model } ) );
+      _this.subViews.push( new Application.DemoItemView( { model: model, className: 'demo__item' } ) );
 
     } );
+
 
     this.render();
 
@@ -32,7 +34,7 @@ Application.DemoItemsLine = Backbone.View.extend({
 
     } );
 
-    this.showItem(0);
+    this.showItem( 0 );
 
     return this;
 
@@ -44,13 +46,19 @@ Application.DemoItemsLine = Backbone.View.extend({
 
     this.currentViewIndex++;
 
-    if ( this.currentView ) this.currentView.$el.addClass( 'previous' );
+    if ( this.currentView ) {
+
+      this.currentView.$el.addClass( 'previous' );
+
+      this.currentView.unselect();
+
+    }
 
     this.currentView = this.subViews[ this.currentViewIndex ];
 
     this.currentView.$el.addClass( 'current' );
 
-    if ( this.currentViewIndex == this.subViews.length - 1 ) this.trigger('demoItemsLine:end');
+    if ( this.currentViewIndex == this.subViews.length - 1 ) this.trigger( 'demoItemsLine:end' );
 
   },
 
@@ -60,13 +68,19 @@ Application.DemoItemsLine = Backbone.View.extend({
 
     this.currentViewIndex--;
 
-    if ( this.currentView ) this.currentView.$el.removeClass( 'current' );
+    if ( this.currentView ) {
+
+      this.currentView.$el.removeClass( 'current' );
+
+      this.currentView.unselect();
+
+    }
 
     this.currentView = this.subViews[ this.currentViewIndex ];
 
     this.currentView.$el.removeClass( 'previous' );
 
-    if ( this.currentViewIndex == 0 ) this.trigger('demoItemsLine:start');
+    if ( this.currentViewIndex == 0 ) this.trigger( 'demoItemsLine:start' );
 
   },
 

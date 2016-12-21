@@ -4,15 +4,21 @@ Application.DemoItemView = Backbone.View.extend({
 
   tagName: 'div',
 
-  className: 'demo__item',
-
   initialize: function() {
 
+    this.listenTo( this.model, 'change:selected', this.onSelectedChanged );
+
     this.render();
-    
+
   },
 
-  template: _.template( '<a href="<%= href %>"><img class="responsiveImg" src="<%= imgUrl %>" alt=""></a>' ),
+  events: {
+
+    'click': 'onClick'
+
+  },
+
+  template: _.template( '<img class="responsiveImg" src="<%= imgUrl %>" alt="">' ),
 
   render: function() {
 
@@ -22,5 +28,30 @@ Application.DemoItemView = Backbone.View.extend({
 
   },
 
+  onClick: function() {
+
+    this.select();
+
+  },
+
+  onSelectedChanged: function( model ) {
+
+    if ( model.changed[ 'selected' ] === true ) this.$el.addClass( 'item--selected' );
+
+    else                                        this.$el.removeClass( 'item--selected' );
+
+  },
+
+  select: function() {
+
+    this.model.set( 'selected', true );
+
+  },
+
+  unselect: function() {
+
+    this.model.set( 'selected', false );
+
+  }
 
 });
