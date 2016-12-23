@@ -6,8 +6,8 @@ Application.MenuRootView = Backbone.View.extend({
     this.menuButtonView = new Application.MenuButtonView();
     this.menuView = new Application.MenuView({ model: Application.menuModel });
 
-    this.listenTo(this.menuButtonView, 'menu:open', this.onMenuOpen);
-    this.listenTo(this.menuButtonView, 'menu:close', this.onMenuClose);
+    this.listenTo(this.menuButtonView, 'menu:open', this.menuOpen);
+    this.listenTo(this.menuButtonView, 'menu:close', this.menuClose);
 
     this.visualizationsView = null;
     this.timelineShown = false; // reflects the state of timeline button
@@ -27,17 +27,17 @@ Application.MenuRootView = Backbone.View.extend({
     Application._vent.on('filters/on', this.addFiltersView, this);
     Application._vent.on('controlpanel/subview/model', this.changeLocation, this);
     //Application._vent.on('matcher/submit', this.addFiltersView, this);
-    Application._vent.on('timeline/ready', this.addTimelineView, this);
+    //Application._vent.on('timeline/ready', this.addTimelineView, this);
     Application._vent.on('matcher/submit', this.addCameraSwitcherView, this);
 
-    this.helpButton = new Application.Help();
-    this.helpButton.$el.attr('id', 'helpButton');
-
-    this.feedback = new Application.FeedBack();
-    this.feedback.$el.attr('id', 'feedbackButton');
-
-    this.$el.append(this.helpButton.render().$el);
-    this.$el.append(this.feedback.render().$el);
+    // this.helpButton = new Application.Help();
+    // this.helpButton.$el.attr('id', 'helpButton');
+    //
+    // this.feedback = new Application.FeedBack();
+    // this.feedback.$el.attr('id', 'feedbackButton');
+    //
+    // this.$el.append(this.helpButton.render().$el);
+    // this.$el.append(this.feedback.render().$el);
 
   },
   render: function() {
@@ -50,12 +50,12 @@ Application.MenuRootView = Backbone.View.extend({
     return this;
   },
 
-  onMenuOpen: function() {
+  menuOpen: function() {
 
    this.menuView.openMenu();
 
   },
-  onMenuClose: function() {
+  menuClose: function() {
 
    this.menuView.closeMenu();
 

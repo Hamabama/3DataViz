@@ -17,7 +17,7 @@ Application.Examples = function() {
       Application.userConfig.model = 'json';
       Application.userConfig.template = 'dynamic';
       Application.userConfig.templateTitle = 'Earthquakes';
-      Application.userConfig.files = 'SampleData/Location/earthquake.json';
+      Application.userConfig.files = 'src/SampleData/Location/earthquake.json';
       Application._vent.trigger('controlpanel/subview/remove');
       Application._vent.trigger('controlpanel/menu/clear');
       Application._vent.trigger('controlpanel/parse'); // create collection

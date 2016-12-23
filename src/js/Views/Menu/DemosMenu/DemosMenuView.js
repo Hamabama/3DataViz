@@ -26,6 +26,8 @@ Application.DemosMenuView = Backbone.View.extend({
 
     this.buttonVisualize = new Application.VisualizeButtonView();
 
+    this.listenTo( this.buttonVisualize, 'menu:visualize', this.onVisualize);
+
     this.listenTo( Application.demoItemsCollection, 'change:selected', this.onChangedSelected);
 
   },
@@ -96,9 +98,11 @@ Application.DemosMenuView = Backbone.View.extend({
 
   },
 
-  onChangedSelected: function() {
+  onChangedSelected: function( model ) {
 
      this.enableButtonVisualize();
+
+     this.setSelectionCurrent( model );
 
   },
 
@@ -111,6 +115,18 @@ Application.DemosMenuView = Backbone.View.extend({
   disableButtonVisualize: function() {
 
     this.buttonVisualize.hide();
+
+  },
+
+  onVisualize: function() {
+
+    Application.router.navigate( this.currentDemoLink, true );
+
+  },
+
+  setSelectionCurrent: function( model ) {
+
+    this.currentDemoLink = model.get( 'href' );
 
   }
 

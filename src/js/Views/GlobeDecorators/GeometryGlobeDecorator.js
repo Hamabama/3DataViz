@@ -84,7 +84,7 @@ Application.GeometryGlobeDecorator = (function() {
     var that = this;
     $.ajax({
       type: 'GET',
-      url: 'Models/data/geodata.json',
+      url: 'src/js/Models/data/geodata.json',
       dataType: 'json',
       cache: false,
       error: function() {

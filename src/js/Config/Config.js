@@ -12,7 +12,7 @@ Application = {
 
     //Create Route which handles Views and Models
     init: function() {
-        new this.RootRouter();
+        this.router = new this.RootRouter();
         Backbone.history.start();
         $('#startScreen').remove();
     },
@@ -20,37 +20,37 @@ Application = {
         name: 'model',
         map: { /*twitterDB: 'Tweets from DB', twitterLive: 'Twitter Live',*/ csv: 'Local File', box: 'BOX', spreadSheet:'Google SpreadSheet', googleTrends: 'Google Trends'},
         spreadSheet: {
-            url: ['Models/SpreadSheetGlobeModel.js'],
+            url: ['/src/js/Models/SpreadSheetGlobeModel.js'],
             attributes: true,
             templates: ['points', 'countries', 'graph']
         },
         googleTrends: {
-            url: ['Models/GoogleTrendsGlobeModel.js'],
+            url: ['/src/js/Models/GoogleTrendsGlobeModel.js'],
             attributes: false,
             templates: ['countries']
         },
         twitterDB: {
-            url: ['Models/TwitterDBModel.js'],
+            url: ['/src/js/Models/TwitterDBModel.js'],
             attributes: false,
             templates: ['dynamic']
         },
         twitterLive: {
-            url: ['Models/TwitterLiveModel.js'],
+            url: ['/src/js/Models/TwitterLiveModel.js'],
             attributes: false,
             templates: ['dynamic']
         },
         csv: {
-            url: ['Models/CSVGlobeModel.js'],
+            url: ['/src/js/Models/CSVGlobeModel.js'],
             attributes: true,
             templates: ['points', 'countries', 'graph']
         },
         box: {
-            url: ['Models/BoxGlobeModel.js'],
+            url: ['/src/js/Models/BoxGlobeModel.js'],
             attributes: true,
             templates: ['points', 'countries', 'graph']
         },
         json: {
-            url: ['Models/JSONmodel.js'],
+            url: ['/src/js/Models/JSONmodel.js'],
             attributes: true,
             templates: ['points', 'countries', 'graph']
         }
@@ -60,7 +60,7 @@ Application = {
         name: 'template',
         map: { countries: 'regional', points: 'location', dynamic: 'realtime', graph: 'relationship', pointcloud: 'pointcloud' },  // internal name / display name
         countries: {
-            url: ['Views/Layers/CountriesLayer.js'],
+            url: ['/src/js/Views/Layers/CountriesLayer.js'],
             attributes: {
                 default: ['country', 'value', 'category', 'date'],
                 optional: ['category', 'countrycode', 'label']
@@ -69,7 +69,7 @@ Application = {
             decorator: 'geometry',
         },
         points: {
-            url: ['Views/Layers/PointsLayer.js'],
+            url: ['/src/js/Views/Layers/PointsLayer.js'],
             attributes: {
                 default: ['latitude', 'longitude', 'label', 'value', 'category', 'date'],
                 optional: ['label', 'value', 'category']
@@ -78,7 +78,7 @@ Application = {
             decorator: 'geometry',
         },
         dynamic: {
-            url: ['Views/Layers/DynamicLayer.js', 'Views/Layers/DynamicLayerParticle.js'],
+            url: ['/src/js/Views/Layers/DynamicLayer.js', '/src/js/Views/Layers/DynamicLayerParticle.js'],
             attributes: {
                 default: ['latitude', 'longitude', 'date'],
                 optional: ['value', 'category']
@@ -87,7 +87,7 @@ Application = {
             decorator: 'geometry',
         },
         graph: {
-            url: ['Views/Layers/GraphsLayer.js'],
+            url: ['/src/js/Views/Layers/GraphsLayer.js'],
             attributes: {
                 default: ['label_from', 'latitude_from', 'longitude_from',  'label_to', 'latitude_to', 'longitude_to', 'value', 'category', 'date'],
                 optional: ['timestamp', 'value', 'category']
@@ -96,7 +96,7 @@ Application = {
             decorator: 'geometry',
         },
         pointcloud: {
-          	url: ['Views/Layers/PointCloudLayer.js'],
+          	url: ['/src/js/Views/Layers/PointCloudLayer.js'],
               attributes: {
           	    default: ['x','y','z','value','category', 'date'],
                 optional: ['value','category']

@@ -22,7 +22,13 @@ Application.RootRouter = Backbone.Router.extend({
 
   },
   checkInit: function() {
+
     if (!this.view) this.initRootView();
+
+    this.view.menuRootView.menuClose();
+
+    this.view.introPage.remove();
+
     if (this.exampleView) this.exampleView.destroy();
   },
   initEarthquakes: function() {

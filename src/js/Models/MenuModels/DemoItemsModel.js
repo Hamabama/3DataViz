@@ -30,7 +30,7 @@ Application.demoItemsCollection = new Application.DemoItemsCollection([
 
     imgUrl: 'src/Assets/images/examples/earthquakes.jpg',
 
-    href: '#earthquakes',
+    href: 'earthquakes',
 
     description: 'This visualization shows the earthquakes happened over some time around the world.'
 
@@ -42,7 +42,7 @@ Application.demoItemsCollection = new Application.DemoItemsCollection([
 
     imgUrl: 'src/Assets/images/examples/immigration.jpg',
 
-    href: '#immigration',
+    href: 'immigration',
 
     description: 'This visualization show immigration volumes per country to Canada.'
 
@@ -54,7 +54,7 @@ Application.demoItemsCollection = new Application.DemoItemsCollection([
 
     imgUrl: 'src/Assets/images/examples/currencies.jpg',
 
-    href: '#currencies',
+    href: 'currencies',
 
     description: 'This visualization show currencies data over some time.'
 

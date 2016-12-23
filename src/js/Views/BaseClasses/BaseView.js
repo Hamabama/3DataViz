@@ -211,7 +211,7 @@ Application.BaseView = Backbone.View.extend({
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setClearColor(0x000000);
 
-    var width = this.options.size.width - this.offset;
+    var width = this.options.size.width;
     var height = this.options.size.height;
     this.renderer.setSize(width, height);
 

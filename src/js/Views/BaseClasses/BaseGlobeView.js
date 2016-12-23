@@ -33,7 +33,7 @@ Application.BaseGlobeView = Application.BaseView.extend({
 
         var geometry = new THREE.SphereGeometry(200, 32, 32);
         var material = new THREE.MeshBasicMaterial();
-        material.map = THREE.ImageUtils.loadTexture('Assets/images/galaxy_starfield.png');
+        material.map = THREE.ImageUtils.loadTexture('src/Assets/images/galaxy_starfield.png');
         material.side = THREE.BackSide;
         this.stars = new THREE.Mesh(geometry, material);
         this.scene.add(this.stars);
